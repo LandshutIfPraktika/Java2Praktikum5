@@ -19,7 +19,7 @@ public class FarbServer implements Runnable {
     private final Socket socket;
 
     FarbServer(final Socket socket) {
-        //System.out.println("server created");
+        System.out.println("server created");
         this.socket = socket;
     }
 
@@ -42,6 +42,7 @@ public class FarbServer implements Runnable {
                     to.print(String.format("%02X", red) + String.format("%02X", green) + String.format("%02X", blue));
                     to.println(responseEnd);
                     to.flush();
+                    System.out.println("Color displayed: #"+String.format("%02X", red) + String.format("%02X", green) + String.format("%02X", blue));
                 } else {
                     to.println(badRequest);
                     to.println("");

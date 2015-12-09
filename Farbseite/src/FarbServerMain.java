@@ -9,7 +9,6 @@ public class FarbServerMain {
         try (ServerSocket serverSocket = new ServerSocket(8080)){
             while (true){
                 new Thread(new FarbServer(serverSocket.accept())).start();
-                System.out.println("FarbServer created");
             }
         } catch (Exception ex){
             ex.printStackTrace();

@@ -10,7 +10,7 @@ import java.net.Socket;
  */
 public class FarbServer implements Runnable {
     private final static String responseHeader = "HTTP/1.0 200 OK";
-    private final String responseStart = "<html><body bgcolor=\"#";
+    private final static String responseStart = "<html><body bgcolor=\"#";
     private final static String responseEnd = "\"></body></html>";
 
     private final static String badRequest = "HTTP/1.0 404 NOT FOUND";

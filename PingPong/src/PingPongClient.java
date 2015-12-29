@@ -9,11 +9,12 @@ public class PingPongClient {
     public static void main(String[] args)  {
         try (Socket socket = new Socket("localhost", 2000)
         ) {
-            int ping = 1;
+
             socket.getOutputStream().write(1);
+            int ping = receive(socket.getInputStream());
             while (ping != 0) {
-                ping = receive(socket.getInputStream());
                 send(socket.getOutputStream(), ping + 1);
+                ping = receive(socket.getInputStream());
             }
         } catch (Exception ex) {
             ex.printStackTrace();

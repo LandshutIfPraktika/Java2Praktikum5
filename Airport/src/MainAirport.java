@@ -24,6 +24,6 @@ public class MainAirport {
             ex.printStackTrace();
         }
 
-        planes.stream().forEach(RealPlane::kill);
+        planeThreads.forEach(Thread::interrupt);
     }
 }

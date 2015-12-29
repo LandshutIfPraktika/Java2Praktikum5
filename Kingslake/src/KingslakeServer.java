@@ -36,7 +36,7 @@ public class KingslakeServer {
             this.writer = writer;
 
             String challenge = reader.readLine();
-            while (challenge!= "" && challenge.charAt(0)!= '\0'){
+            while (!challenge.equals("\0")){
                 writeAnswer(challenge);
                 challenge = reader.readLine();
             }

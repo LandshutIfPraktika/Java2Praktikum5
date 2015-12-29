@@ -11,14 +11,14 @@ public class RealRunway extends Runway {
 
     @Override
     synchronized public void arrive(){
-        filled++;
         super.arrive();
+        filled++;
     }
 
     @Override
     synchronized public void depart(){
+        super.depart();
         filled--;
         this.notifyAll();
-        super.depart();
     }
 }

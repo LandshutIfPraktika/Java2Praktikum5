@@ -12,10 +12,10 @@ public class PingPongServer {
     public static void main(String[] args) {
 
         try (Socket socket = new ServerSocket(2000).accept()){
-            int pong =1;
-            while (pong != 0){
-                pong = receive(socket.getInputStream());
+            int pong =receive(socket.getInputStream());
+            while (pong > 0){
                 send(socket.getOutputStream(),pong+1);
+                pong = receive(socket.getInputStream());
             }
 
         } catch (Exception ex) {

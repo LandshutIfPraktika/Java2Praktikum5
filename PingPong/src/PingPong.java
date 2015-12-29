@@ -9,25 +9,24 @@ import java.net.Socket;
  */
 public class PingPong {
 
-    public static void  main(String[] args) {
-        final boolean client = args.length>0 && args[0].equals("client");
-        try (Socket socket = client ? new Socket("localhost",2000):new ServerSocket(2000).accept()){
-            if (client){
-                send(socket.getOutputStream(),1);
+    public static void main(String[] args) {
+        final boolean client = args.length > 0 && args[0].equals("client");
+        try (Socket socket = client ? new Socket("localhost", 2000) : new ServerSocket(2000).accept()) {
+            if (client) {
+                send(socket.getOutputStream(), 1);
             }
-            int ping_pong = 1;
-            while (ping_pong != 0){
+            int ping_pong = receive(socket.getInputStream());
+            while (ping_pong > 0) {
+                send(socket.getOutputStream(), ping_pong + 1);
                 ping_pong = receive(socket.getInputStream());
-                send(socket.getOutputStream(),ping_pong+1);
             }
 
 
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
     }
-
 
 
     /**
